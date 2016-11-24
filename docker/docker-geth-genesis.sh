@@ -33,7 +33,7 @@ This script will REMOVE ALL FILES in the $CHAINDATA path specified below
 
 
 # remove any previous version of the docker image
-docker rm springblocknode
+docker rm geth
 
 #DO NOT CHANGE THESE VALUES
 CHAINDATA=/BlockchainInfrastructure/Blockchain/data
@@ -48,7 +48,7 @@ echo " "
 echo " "
 echo "GETH  CMD  = geth $GENESISPARAMS"
 
-echo "Backig up current static & trusted nodes files"
+echo "Backing up current static & trusted nodes files"
 mkdir $WORKDIR/backup
 cp $CHAINDATA/*.json $WORKDIR/backup
 
@@ -60,7 +60,7 @@ cp $WORKDIR/backup/*.json $CHAINDATA
 rm -rf $WORKDIR/backup
 
 echo "Starting the geth container"
-docker run -t -i --name springblocknode -v $WORKDIR:$WORKDIR \
+docker run -t -i --name geth -v $WORKDIR:$WORKDIR \
     --network="host" \
     -w="$WORKDIR" \
     ethereum/client-go $GENESISPARAMS

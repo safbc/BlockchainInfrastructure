@@ -43,7 +43,7 @@ connections can be etablished. These must be placed in the $CHAINDATA path speci
 "
 
 # remove any previous version of the docker image
-docker rm springblocknode
+docker rm geth
 
 # get IPs from ifconfig and dig and display for information
 #LOCALIP=$(ifconfig | grep 'inet ' | grep -v '127.0.0.1' | head -n1 | awk '{print $2}' | cut -d':' -f2)
@@ -88,7 +88,7 @@ echo "
 Starting up node...
 
 "
-docker run -it --name springblocknode -v $WORKDIR:$WORKDIR \
+docker run -it --name geth -v $WORKDIR:$WORKDIR \
     --network="host" \
     -p $PORT:$PORT -p $RPCPORT:$RPCPORT \
     -w="$WORKDIR" \
